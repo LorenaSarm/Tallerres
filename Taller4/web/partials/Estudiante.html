@@ -1,0 +1,114 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Estudiante</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Estudiantes</button>
+</div>
+
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Estudiante</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    Nombres
+                </th>
+                <th>
+                    Apellidos
+                </th>
+                <th>
+                    C&oacute;digo
+                </th>
+                <th>
+                    Documento
+                </th>
+                <th>
+                    Fecha de nacimiento
+                </th>
+                <th>
+                    Lugar de nacimiento
+                </th>
+                <th>
+                    Carrera
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                <td>{{row.nombres}}</td>
+                <td>{{row.apellidos}}</td>
+                <td>{{row.codigo}}</td>
+                <td>{{row.documento}}</td>
+                <td>{{row.fechaNacimiento}}</td>
+                <td>{{row.lugarNacimiento}}</td>
+                <td>{{row.carrera}}</td>
+
+                <td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Estudiante</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
+                    <label for="nombre">Nombres</label>
+                    <input id="nombre" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.nombres"
+                           placeholder="Nombres"/>
+                    <label for="nombre">Apellidos</label>
+                    <input id="apellido" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.apellidos"
+                           placeholder="Apellidos"/>
+                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                    <label for="nombre">C&oacute;digo</label>
+                    <input id="codigo" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.codigo"
+                           placeholder="C&oacute;digo"/>
+                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                    <label for="nombre">Lugar de nacimiento</label>
+                    <select id="lugarNacimiento" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.lugarNacimiento"
+                           placeholder="Lugar de nacimiento"/></select>
+                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                    <label for="nombre">Carrera</label>
+                    <select id="Carrera" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.carrera"
+                        placeholder="Carrera">
+                        <option>Sistemas y computación</option>
+                        <option>Derecho</option>
+                        <option>Medicina</option>
+                        <option>Psicolog&iacute;a</option>
+                        <option>Transporte y v&iacute;as</option>
+                    </select>
+                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                </div>
+            </div> 
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
