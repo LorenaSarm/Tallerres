@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Ejercicio T</title>");            
+            out.println("<title>Ejercicio Filter</title>");            
             out.println("</head>");
             out.println("<body>");
             String name = request.getParameter("name");
