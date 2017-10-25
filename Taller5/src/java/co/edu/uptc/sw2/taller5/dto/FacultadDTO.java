@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="Facultad")
 public class FacultadDTO {
 
     public FacultadDTO() {

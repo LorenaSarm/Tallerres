@@ -12,6 +12,7 @@ app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/Carrera', {templateUrl: 'partials/Carrera.html', controller: 'CarreraCtrl'});
 	$routeProvider.when('/Municipio', {templateUrl: 'partials/Municipio.html', controller: 'MunicipioCtrl'});
 	$routeProvider.when('/Estudiante', {templateUrl: 'partials/Estudiante.html', controller: 'EstudianteCtrl'});
+	$routeProvider.when('/Estudiante', {templateUrl: 'partials/Estudiante.html', controller: 'DatePickerCtrl'});
 	
   	$routeProvider.otherwise({redirectTo: '/'}); 
 }]);

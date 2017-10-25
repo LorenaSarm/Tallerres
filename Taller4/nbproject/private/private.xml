@@ -2,19 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/js/MunicipioController.js</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/index.html</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/css/main.css</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/js/RouteProvider.js</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/partials/Facultad.html</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/partials/Municipio.html</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/partials/Estudiante.html</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/partials/Carrera.html</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/js/FacultadController.js</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/js/Modelo.js</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/js/CarreraController.js</file>
-            <file>file:/D:/Lorena/Documents/2017-2/SW2/Taller4/web/js/EstudianteController.js</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

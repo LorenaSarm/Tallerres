@@ -47,13 +47,13 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
 
     private Gson getGson() {
         if (gson == null) {
-            JsonSerializer<Date> ser = new JsonSerializer<Date>(){
+            JsonSerializer<Date> ser = new JsonSerializer<Date>() {
 
                 @Override
                 public JsonElement serialize(Date src, Type type, JsonSerializationContext jsc) {
                     return src == null ? null : new JsonPrimitive(src.getTime());
                 }
-                
+
             };
 
             JsonDeserializer<Date> deser = new JsonDeserializer<Date>() {
@@ -79,8 +79,8 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>,
 
     @Override
     public Object readFrom(Class<Object> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) {
-        try{
-            try(InputStreamReader streamReader = new InputStreamReader(entityStream, UTF_8)){
+        try {
+            try (InputStreamReader streamReader = new InputStreamReader(entityStream, UTF_8)) {
                 Type jsonType;
                 if (type.equals(genericType)) {
                     jsonType = type;

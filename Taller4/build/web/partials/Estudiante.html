@@ -39,8 +39,8 @@
                 <td>{{row.codigo}}</td>
                 <td>{{row.documento}}</td>
                 <td>{{row.fechaNacimiento}}</td>
-                <td>{{row.lugarNacimiento}}</td>
-                <td>{{row.carrera}}</td>
+                <td>{{row.municipio.nombre}}</td>
+                <td>{{row.carrera.nombre}}</td>
 
                 <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
@@ -58,7 +58,7 @@
 
 <div class="panel panel-primary" ng-show="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de Estudiante</div>
-    <div class="panel-body">
+    <div class="panel-body"> 
         <form role="form" id="formularioEditar">
             <div class="row">
                 <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
@@ -82,24 +82,38 @@
                            ng-model="datosFormulario.codigo"
                            placeholder="C&oacute;digo"/>
                     <div ng-show="errores.nombre">{{errores.nombre}}</div>
-                    <label for="nombre">Lugar de nacimiento</label>
-                    <select id="lugarNacimiento" 
+                    <label for="nombre">Documento</label>
+                    <input id="documento" 
                            class="form-control" 
                            type="text"
-                           ng-model="datosFormulario.lugarNacimiento"
-                           placeholder="Lugar de nacimiento"/></select>
+                           ng-model="datosFormulario.documento"
+                           placeholder="Documento"/>
+                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                    <label for="nombre">Fecha de nacimiento</label>
+                    <!--<h4>Standard date-picker</h4>-->
+                    <!--                    <md-content ng-controller="DatePickerCtrl" class="datepicker" ng-app="datepicker">
+                                            <div layout-gt-xs="row">
+                                                <div flex-gt-xs="">
+                                                    <md-datepicker ng-model="DatePickerCtrl.myDate" md-placeholder="Enter date"></md-datepicker>
+                                                </div>
+                                        </md-content>-->
+                    <div ng-show="errores.fechaNacimiento">{{errores.fechaNacimiento}}</div>
+                    <label for="nombre">Lugar de nacimiento</label>
+                    <select id="lugarNacimiento" 
+                            class="form-control" 
+                            type="text"
+                            ng-model="datosFormulario.lugarNacimiento"
+                            ng-options="option.nombre for option in listaMunicipios track by option.id"
+                        placeholder = "Lugar de nacimiento"/>
+                    </select>
                     <div ng-show="errores.nombre">{{errores.nombre}}</div>
                     <label for="nombre">Carrera</label>
                     <select id="Carrera" 
-                           class="form-control" 
-                           type="text"
-                           ng-model="datosFormulario.carrera"
+                            class="form-control" 
+                            type="text"
+                            ng-model="datosFormulario.carrera"
+                            ng-options="option.nombre for option in listaCarreras track by option.id"
                         placeholder="Carrera">
-                        <option>Sistemas y computación</option>
-                        <option>Derecho</option>
-                        <option>Medicina</option>
-                        <option>Psicolog&iacute;a</option>
-                        <option>Transporte y v&iacute;as</option>
                     </select>
                     <div ng-show="errores.nombre">{{errores.nombre}}</div>
                 </div>

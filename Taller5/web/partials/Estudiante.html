@@ -9,20 +9,20 @@
         <table class="resultados table table-striped">
             <tr>
                 <th>
-                    Nombres
+                    nombres
                 </th>				<th>
-                    Apellidos
+                    apellidos
                 </th>				<th>
-                    C&oacute;digo
+                    codigo
                 </th>				<th>
-                    Documento
+                    documento
                 </th>				<th>
-                    Fecha de Nacimiento
+                    fechaNacimiento
                 </th>
                 <th>
-                    Carrera
+                    carrera
                 </th>				<th>
-                    Lugar de Nacimiento
+                    lugarNacimiento
                 </th>
                 <th>
                     <input class="form-control" ng-model="q"  placeholder="Buscar"/>
@@ -40,7 +40,8 @@
                 <td>{{row.fechaNacimiento| date: 'dd/MM/yyyy'}}</td>
 
 
-                <td class="row">{{row.carrera.nombre}}</td>              	<td class="row">{{row.lugarNacimiento.nombre}}</td>              
+                <td class="row">{{row.carrera.nombre}}</td>
+                <td class="row">{{row.lugarNacimiento.nombre}}</td>              
                 <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
@@ -62,7 +63,7 @@
         <form role="form" id="formularioEditar">
             <div class="row">
                 <div class="form-group col-md-6" ng-class="errores.nombres ? 'error' : ''">
-                    <label for="nombres">Nombres</label>
+                    <label for="nombres">nombres</label>
                     <input id="nombres" 
                            class="form-control" 
                            type="text"
@@ -72,7 +73,7 @@
                 </div>
             </div>				<div class="row">
                 <div class="form-group col-md-6" ng-class="errores.apellidos ? 'error' : ''">
-                    <label for="apellidos">Apellidos</label>
+                    <label for="apellidos">apellidos</label>
                     <input id="apellidos" 
                            class="form-control" 
                            type="text"
@@ -82,7 +83,7 @@
                 </div>
             </div>				<div class="row">
                 <div class="form-group col-md-6" ng-class="errores.codigo ? 'error' : ''">
-                    <label for="codigo">C&oacute;digo</label>
+                    <label for="codigo">codigo</label>
                     <input id="codigo" 
                            class="form-control" 
                            type="text"
@@ -92,7 +93,7 @@
                 </div>
             </div>				<div class="row">
                 <div class="form-group col-md-6" ng-class="errores.documento ? 'error' : ''">
-                    <label for="documento">Documento</label>
+                    <label for="documento">documento</label>
                     <input id="documento" 
                            class="form-control" 
                            type="text"
@@ -102,7 +103,7 @@
                 </div>
             </div>				<div class="row">
                 <div class="form-group col-md-6" ng-class="errores.fechaNacimiento ? 'error' : ''">
-                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <label for="fechaNacimiento">fechaNacimiento</label>
                     <div class="input-group">
                         <input id="fechaNacimiento" 
                                class="form-control datepicker" 
@@ -111,17 +112,17 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                     <script>
-                                $('#fechaNacimiento').datepicker({format: 'dd/mm/yyyy', language: "es"})
-                                        .on('changeDate', function (ev) {
-                                            dp_fechaNacimiento.hide();
-                                        }).data('datepicker');
+                        $('#fechaNacimiento').datepicker({format: 'dd/mm/yyyy', language: "es"})
+                                .on('changeDate', function (ev) {
+                                dp_fechaNacimiento.hide();
+                                }).data('datepicker');
                     </script>
                     <div ng-show="errores.fechaNacimiento">{{errores.fechaNacimiento}}</div>
                 </div>
             </div> 
             <div class="row">
                 <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
-                    <label>Carrera</label>
+                    <label>carrera</label>
                     <select id="carrera" class="form-control" 
                             ng-model="datosFormulario.carrera"
                             ng-options="option.nombre for option in listaCarrera track by option.id">
@@ -130,7 +131,7 @@
                 </div>
             </div>				<div class="row">
                 <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
-                    <label>Lugar de Nacimiento</label>
+                    <label>lugarNacimiento</label>
                     <select id="lugarNacimiento" class="form-control" 
                             ng-model="datosFormulario.lugarNacimiento"
                             ng-options="option.nombre for option in listaLugarNacimiento track by option.id">
