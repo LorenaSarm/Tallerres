@@ -18,5 +18,20 @@ var municipios=[
 
 var idEstudiante=2;
 var estudiantes=[
-    {"id":1, "nombres":"Pepito", "apellidos":"Perez", "codigo":"20234134", "documento":1000124232, "fechaNacimiento": "02/03/1999", "lugarNacimiento":"Tuta", "carrera":"Sistemas"}
+    {"id":1, "nombres":"Pepito", "apellidos":"Perez", "codigo":"20234134", "documento":1000124232, "fechaNacimiento": "02/03/1999", "lugarNacimiento":"Tunja", "carrera":"Sistemas"}
+];
+
+var idProfesor=1;
+var profesores=[
+     {"id":1, "nombres":"Pepito Juan", "apellidos":"Perez Lola", "documento":1000124232}
+];
+
+var idMateria=0;
+var materias=[
+    
+];
+
+var idMatricula=1;
+var matriculas=[
+    
 ];

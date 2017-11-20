@@ -14,15 +14,6 @@
             <file>file:/D:/Documents/NetBeansProjects/Taller5/src/java/co/edu/uptc/sw2/taller5/servicio/CarreraServicio.java</file>
             <file>file:/D:/Documents/NetBeansProjects/Taller5/src/java/org/netbeans/rest/application/config/ApplicationConfig.java</file>
         </group>
-        <group>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/src/java/org/netbeans/rest/application/config/ApplicationConfig.java</file>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/src/java/co/edu/uptc/sw2/taller5/servicio/ProfesorServicio.java</file>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/web/js/MateriaController.js</file>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/web/js/ProfesorController.js</file>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/src/java/co/edu/uptc/sw2/taller5/dto/ProfesorDTO.java</file>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/src/java/co/edu/uptc/sw2/taller5/servicio/EstudianteServicio.java</file>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/src/java/co/edu/uptc/sw2/taller5/servicio/MateriaServicio.java</file>
-            <file>file:/G:/Lorena/Documents/2017-2/SW2/Talleres/Taller5/src/java/co/edu/uptc/sw2/taller5/dto/MateriaDTO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

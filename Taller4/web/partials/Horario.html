@@ -1,0 +1,107 @@
+<div class="panel panel-primary" ng-show="panelVerHorario">
+    <div class="panel-heading">Parametrizaci&oacute;n de Materia</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    D&iacute;a de la semana
+                </th>
+                <th>
+                    Hora inicial
+                </th>
+                <th>
+                    Hora final
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in listaHorarios">
+                <td>{{row.diaSemana}}</td>
+                <td>{{row.horaInicial}}</td>
+                <td>{{row.horaFinal}}</td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-hide="panelEditarHorario">
+    <div class="panel-heading">Parametrizaci&oacute;n de Materia</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    D&iacute;a de la semana
+                </th>
+                <th>
+                    Hora inicial
+                </th>
+                <th>
+                    Hora final
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            <tr ng-repeat="row in listaHorarios">
+                <td>{{row.diaSemana}}</td>
+                <td>{{row.horaInicial}}</td>
+                <td>{{row.horaFinal}}</td>
+
+                <td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editarHorario(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="eliminarHorario(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditarHorario">
+    <div class="panel-heading">Parametrizaci&oacute;n de Materia</div>
+    <div class="panel-body"> 
+        <form role="form" id="formularioEditar">
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
+                    <label for="diaSemana">D&iacute;a de la semana</label>
+                    <select id="diaSemana" 
+                            class="form-control" 
+                            type="text"
+                            ng-model="datosHorario.diaSemana"
+                            placeholder = "D&iacute;a de la semana">
+                        <option>Lunes</option>
+                        <option>Martes</option>
+                        <option>Mi&eacute;coles</option>
+                        <option>Jueves</option>
+                        <option>Viernes</option>
+                        <option>S&aacute;bado</option>
+                    </select>
+                    <div ng-show="errores.diaSemana">{{errores.diaSemana}}</div>
+                    <label for="timepicker1">Hora Inicial</label>
+                    <div id="horaInicial" class="input-group bootstrap-timepicker timepicker">
+                        <input id="timepicker1" type="text" class="form-control input-small">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                    </div>
+                    <div ng-show="errores.horaInicial">{{errores.horaInicial}}</div>
+                    <label for="timepicker2">Hora Final</label>
+                    <div id="horaFinal" class="input-group bootstrap-timepicker timepicker">
+                        <input id="timepicker2" type="text" class="form-control input-small">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                    </div>
+                    <div ng-show="errores.horaFinal">{{errores.horaFinal}}</div>
+                </div>
+            </div> 
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardarHorario()">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelarHorario()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

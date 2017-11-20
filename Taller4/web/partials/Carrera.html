@@ -1,6 +1,6 @@
 <div class="btn-group">
-    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Carrera</button>
-    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Carrera</button>
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nueva Carrera</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Carreras</button>
 </div>
 
 <div class="panel panel-primary" ng-hide="panelEditar">
@@ -9,10 +9,10 @@
         <table class="resultados table table-striped">
             <tr>
                 <th>
-                    nombre
+                    Nombre
                 </th>
                 <th>
-                    facultad
+                    Facultad
                 </th>
                 <th>
                     &nbsp;
@@ -20,9 +20,8 @@
             </tr>
             <tr ng-repeat="row in lista">
                 <td>{{row.nombre}}</td>
-
-
-                <td class="row">{{row.facultad.nombre}}</td>              
+                <td class="row">{{row.facultad.nombre}}</td>     
+                
                 <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
@@ -43,7 +42,7 @@
         <form role="form" id="formularioEditar">
             <div class="row">
                 <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
-                    <label for="nombre">nombre</label>
+                    <label for="nombre">Nombre</label>
                     <input id="nombre" 
                            class="form-control" 
                            type="text"
@@ -54,7 +53,7 @@
             </div> 
             <div class="row">
                 <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
-                    <label>facultad</label>
+                    <label>Facultad</label>
                     <select id="facultad" class="form-control" 
                             ng-model="datosFormulario.facultad"
                             ng-options="option.nombre for option in listaFacultad track by option.id">

@@ -39,8 +39,8 @@
                 <td>{{row.codigo}}</td>
                 <td>{{row.documento}}</td>
                 <td>{{row.fechaNacimiento}}</td>
-                <td>{{row.municipio.nombre}}</td>
-                <td>{{row.carrera.nombre}}</td>
+                <td class="row">{{row.municipio.nombre}}</td>
+                <td class="row">{{row.carrera.nombre}}</td>
 
                 <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
@@ -62,34 +62,35 @@
         <form role="form" id="formularioEditar">
             <div class="row">
                 <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
-                    <label for="nombre">Nombres</label>
-                    <input id="nombre" 
+                    <label for="nombres">Nombres</label>
+                    <input id="nombres" 
                            class="form-control" 
                            type="text"
                            ng-model="datosFormulario.nombres"
                            placeholder="Nombres"/>
-                    <label for="nombre">Apellidos</label>
-                    <input id="apellido" 
+                    <div ng-show="errores.nombres">{{errores.nombres}}</div>
+                    <label for="apellidos">Apellidos</label>
+                    <input id="apellidos" 
                            class="form-control" 
                            type="text"
                            ng-model="datosFormulario.apellidos"
                            placeholder="Apellidos"/>
-                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
-                    <label for="nombre">C&oacute;digo</label>
+                    <div ng-show="errores.apellidos">{{errores.apellidos}}</div>
+                    <label for="codigo">C&oacute;digo</label>
                     <input id="codigo" 
                            class="form-control" 
-                           type="text"
+                           type="number"
                            ng-model="datosFormulario.codigo"
                            placeholder="C&oacute;digo"/>
-                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
-                    <label for="nombre">Documento</label>
+                    <div ng-show="errores.codigo">{{errores.codigo}}</div>
+                    <label for="documento">Documento</label>
                     <input id="documento" 
                            class="form-control" 
-                           type="text"
+                           type="number"
                            ng-model="datosFormulario.documento"
                            placeholder="Documento"/>
-                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
-                    <label for="nombre">Fecha de nacimiento</label>
+                    <div ng-show="errores.documento">{{errores.documento}}</div>
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
                     <!--<h4>Standard date-picker</h4>-->
                     <!--                    <md-content ng-controller="DatePickerCtrl" class="datepicker" ng-app="datepicker">
                                             <div layout-gt-xs="row">
@@ -98,7 +99,7 @@
                                                 </div>
                                         </md-content>-->
                     <div ng-show="errores.fechaNacimiento">{{errores.fechaNacimiento}}</div>
-                    <label for="nombre">Lugar de nacimiento</label>
+                    <label for="lugarNacimiento">Lugar de nacimiento</label>
                     <select id="lugarNacimiento" 
                             class="form-control" 
                             type="text"
@@ -106,9 +107,9 @@
                             ng-options="option.nombre for option in listaMunicipios track by option.id"
                         placeholder = "Lugar de nacimiento"/>
                     </select>
-                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
-                    <label for="nombre">Carrera</label>
-                    <select id="Carrera" 
+                    <div ng-show="errores.lugarNacimiento">{{errores.lugarNacimiento}}</div>
+                    <label for="carrera">Carrera</label>
+                    <select id="carrera" 
                             class="form-control" 
                             type="text"
                             ng-model="datosFormulario.carrera"
