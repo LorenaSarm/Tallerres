@@ -1,16 +1,125 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="btn-group">
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nueva Matr&iacute;cula</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Matr&iacute;cula</button>
+</div>
+
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Matr&iacute;cula</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    A&ntilde;o
+                </th>
+                <th>
+                    Semestre
+                </th>
+                <th>
+                    Estudiante
+                </th>
+                <th>
+                    Materias
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                <td>{{row.anio}}</td>
+                <td>{{row.semestre}}</td>
+                <td class="row">{{row.estudiante.nombres + ' ' + row.estudiante.apellidos}}</td>
+                <td class="row">
+                    <button type="button" class="btn btn-default"
+                            ng-click="editar(row.listaMaterias)" data-toggle="modal" data-target="#verHorarios">
+                        Ver
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Materia</div>
+    <div class="panel-body"> 
+        <form role="form" id="formularioEditar">
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.nombre"
+                           placeholder="Nombre"/>
+                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                    <label for="credito">Cr&eacute;dito</label>
+                    <input id="credito" 
+                           class="form-control" 
+                           type="number"
+                           ng-model="datosFormulario.credito"
+                           placeholder="Cr&eacute;dito"/>
+                    <div ng-show="errores.credito">{{errores.credito}}</div>
+                    <label for="profesor">Profesor</label>
+                    <select id="profesor" 
+                            class="form-control" 
+                            type="text"
+                            ng-model="datosFormulario.profesor"
+                            ng-options="option.nombres + ' ' + option.apellidos for option in listaProfesores track by option.id"
+                            placeholder = "Profesor"/>
+                    </select>
+                    <div ng-show="errores.profesor">{{errores.profesor}}</div>
+                    <label for="carrera">Carrera</label>
+                    <select id="carrera" 
+                            class="form-control" 
+                            type="text"
+                            ng-model="datosFormulario.carrera"
+                            ng-options="option.nombre for option in listaCarreras track by option.id"
+                            placeholder="Carrera">
+                    </select>
+                    <div ng-show="errores.carrera">{{errores.carrera}}</div>
+                    <label for="listaMaterias">Materias</label>
+                    <button type="button" class="btn btn-default" ng-click="nuevoHorario()" data-toggle="modal" data-target="#editarHorarios">
+                        Agregar materia
+                    </button>
+                    <table class="resultados table table-striped">
+                        <tr>
+                            <th>
+                                Materia
+                            </th>
+                            <th>
+                                D&iacute;a de la semana
+                            </th>
+                            <th>
+                                Hora inicial
+                            </th>
+                            <th>
+                                Hora final
+                            </th>
+                            <th>
+                                &nbsp;
+                            </th>
+                        </tr>
+                        <tr ng-repeat="row in datosFormulario.listaHorarios">
+                            <td>{{row.diaSemana}}</td>
+                            <td>{{row.horaInicial}}</td>
+                            <td>{{row.horaFinal}}</td>
+
+                            <td class="row">
+                                <button type="button" class="btn btn-default" ng-click="editarHorario(row)" data-toggle="modal" data-target="#editarHorarios">
+                                    <span class="glyphicon glyphicon-pencil"></span>Editar
+                                </button>
+                                <button type="button" class="btn btn-default" ng-click="eliminarHorario(row)">
+                                    <span class="glyphicon glyphicon-remove"></span>Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                    <div ng-show="errores.listaMaterias">{{errores.listaMaterias}}</div>
+                </div>
+            </div> 
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

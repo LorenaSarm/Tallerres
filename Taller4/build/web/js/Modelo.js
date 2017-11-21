@@ -26,10 +26,12 @@ var profesores=[
      {"id":1, "nombres":"Pepito Juan", "apellidos":"Perez Lola", "documento":1000124232}
 ];
 
-var idMateria=0;
+var idMateria=1;
 var materias=[
     
 ];
+
+var idHorario=1;
 
 var idMatricula=1;
 var matriculas=[

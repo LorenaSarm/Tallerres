@@ -6,11 +6,8 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
         $scope.datosFormulario = {};
         $scope.datosHorario = {};
         $scope.panelEditar = false;
-        $scope.panelEditarHorario = false;
-        $scope.panelVerHorario = false;
         $scope.listaCarreras = carreras;
         $scope.listaProfesores = profesores;
-        $scope.listaHorarios = horarios;
 
         //guardar
         $scope.nuevo = function () {
@@ -45,36 +42,26 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
                 }
             }
         };
-        //ver horarios
-        $scope.ver = function (data) {
-            $scope.panelVerHorario = true;
-            $scope.datosHorario = data;
-        };
         
          //guardar
         $scope.nuevoHorario = function () {
-            $scope.panelVerHorario = false;
-            $scope.panelEditarHorario = true;
             $scope.datosHorario = {};
         };
 
+        //guardar
         $scope.guardarHorario = function () {
-            var index = $scope.listaHorarios.indexOf($scope.datosHorario);
+            var index = $scope.datosFormulario.listaHorarios.indexOf($scope.datosHorario);
             if (index === -1) {
                 $scope.datosHorario.id = idHorario++;
-                $scope.listaHorarios.push($scope.datosHorario);
+                $scope.datosFormulario.listaHorarios.push($scope.datosHorario);
             }
-            $scope.panelEditarHorario = false;
         };
         $scope.cancelarHorario = function () {
-            $scope.panelEditarHorario = false;
             $scope.datosHorario = {};
         };
 
         //editar
         $scope.editarHorario = function (data) {
-            $scope.panelVerHorario = false;
-            $scope.panelEditarHorario = true;
             $scope.datosHorario = data;
         };
         //eliminar
@@ -87,6 +74,7 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
             }
         };
         
-        $('#timepicker1').timepicker();
-        $('#timepicker2').timepicker();
+        $scope.verHorarios = function (data) {
+            $scope.datosFormulario = data;
+        };
     }]);

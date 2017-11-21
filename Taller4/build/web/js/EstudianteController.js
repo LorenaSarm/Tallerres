@@ -1,6 +1,6 @@
 'use strict';
 
-module.controller('EstudianteCtrl', ['$scope', '$filter', '$http', 'ngMaterial', 'ngMessages', function ($scope, $filter, $http) {
+module.controller('EstudianteCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         //listar
         $scope.lista = estudiantes;
         $scope.datosFormulario = {};
@@ -38,7 +38,6 @@ module.controller('EstudianteCtrl', ['$scope', '$filter', '$http', 'ngMaterial',
                 var index = $scope.lista.indexOf($scope.datosFormulario);
                 if (index > -1) {
                     $scope.lista.splice(index, 1);
-                    $scope.datosFormulario.id= idEstudiante--;
                 }
             }
         };
