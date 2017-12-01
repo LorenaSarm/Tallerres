@@ -38,7 +38,7 @@
 </div>
 
 <div class="panel panel-primary" ng-show="panelEditar">
-    <div class="panel-heading">Parametrizaci&oacute;n de Materia</div>
+    <div class="panel-heading">Parametrizaci&oacute;n de Matr&iacute;cula</div>
     <div class="panel-body"> 
         <form role="form" id="formularioEditar">
             <div class="row">
@@ -97,9 +97,10 @@
                                 &nbsp;
                             </th>
                         </tr>
-                        <tr ng-repeat="row in datosFormulario.listaHorarios">
-                            <td>{{row.diaSemana}}</td>
-                            <td>{{row.horaInicial}}</td>
+                        <tr ng-repeat="row in datosFormulario.materias">
+                            <td>{{row.materia.nombre}}</td>
+                            <td>{{row.materia.diaSemana}}</td>
+                            <td>{{row.materia.horaInicial}}</td>
                             <td>{{row.horaFinal}}</td>
 
                             <td class="row">

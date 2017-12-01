@@ -1,0 +1,6 @@
+projectKey=e23
+serverUrl=http://localhost:9000
+serverVersion=6.7.0.33306
+dashboardUrl=http://localhost:9000/dashboard/index/e23
+ceTaskId=AV_lftCYRShICkZdDqdr
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AV_lftCYRShICkZdDqdr

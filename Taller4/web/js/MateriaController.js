@@ -52,6 +52,7 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
         $scope.guardarHorario = function () {
             var index = $scope.datosFormulario.listaHorarios.indexOf($scope.datosHorario);
             if (index === -1) {
+                var idHorario = $scope.datosFormulario.idHorario;
                 $scope.datosHorario.id = idHorario++;
                 $scope.datosFormulario.listaHorarios.push($scope.datosHorario);
             }
@@ -76,5 +77,6 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
         
         $scope.verHorarios = function (data) {
             $scope.datosFormulario = data;
+            alert("Se han ingresado los datos");
         };
     }]);

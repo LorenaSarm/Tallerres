@@ -34,7 +34,7 @@
                 <td class="row">{{row.carrera.nombre}}</td>
                 <td class="row">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#verHorarios"
-                            ng-click="verHorario(row)">
+                            ng-click="verHorarios(row)">
                         Ver
                     </button>
                 </td>
@@ -195,19 +195,35 @@
                                 <option>S&aacute;bado</option>
                             </select>
                             <div ng-show="errores.diaSemana">{{errores.diaSemana}}</div>
-                            <label for="timepicker1">Hora Inicial</label>
-                            <div id="horaInicial" class="input-group bootstrap-timepicker timepicker">
-                                <input id="timepicker1" type="text" ng-model="datosHorario.horaInicial" class="form-control input-small">
+                            <label for="horaInial">Hora Inicial</label>
+<!--                            <div id="datetimepicker" class="input-group bootstrap-timepicker timepicker">
+                                <input data-format="hh:mm:ss"  id="horaInicial" type="text" ng-model="datosHorario.horaInicial" class="form-control input-small">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                                <script>$('#timepicker1').timepicker();</script>
+                            </div>-->
+                            <div id="clockpicker" class="input-group clockpicker">
+                                <input type="text" class="form-control" value="09:30">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
                             </div>
+                            <script type="text/javascript">
+                                        $('#clockpicker').clockpicker();
+                            </script>
                             <div ng-show="errores.horaInicial">{{errores.horaInicial}}</div>
-                            <label for="timepicker2">Hora Final</label>
-                            <div id="horaFinal" class="input-group bootstrap-timepicker timepicker">
-                                <input id="timepicker2" type="text" ng-model="datosHorario.horaFinal" class="form-control input-small">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                                <script>$('#timepicker2').timepicker();</script>
-                            </div>
+                            <label for="horaFinal">Hora Final</label>
+<!--                            <div id="datetimepicker" class="input-group bootstrap-timepicker timepicker">
+                                <input data-format="hh:mm:ss" id="horaFinal" type="text" ng-model="datosHorario.horaFinal" class="form-control input-small">
+                                <span class="add-on">
+                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                    </i>
+                                </span>
+                            </div>-->
+                            <!--<script type="text/javascript">
+                                        $(function () {
+                                            $('#datetimepicker').datetimepicker({
+                                                pickDate: false
+                                            });
+                                        });</script-->
                             <div ng-show="errores.horaFinal">{{errores.horaFinal}}</div>
                         </div>
                     </div> 
