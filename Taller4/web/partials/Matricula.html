@@ -27,7 +27,7 @@
                 <td class="row">{{row.estudiante.nombres + ' ' + row.estudiante.apellidos}}</td>
                 <td class="row">
                     <button type="button" class="btn btn-default"
-                            ng-click="editar(row.listaMaterias)" data-toggle="modal" data-target="#verHorarios">
+                            ng-click="editar(row.zlistaMaterias)" data-toggle="modal" data-target="#verMaterias">
                         Ver
                     </button>
                 </td>
@@ -43,41 +43,45 @@
         <form role="form" id="formularioEditar">
             <div class="row">
                 <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
-                    <label for="nombre">Nombre</label>
-                    <input id="nombre" 
-                           class="form-control" 
-                           type="text"
-                           ng-model="datosFormulario.nombre"
-                           placeholder="Nombre"/>
-                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
-                    <label for="credito">Cr&eacute;dito</label>
-                    <input id="credito" 
-                           class="form-control" 
-                           type="number"
-                           ng-model="datosFormulario.credito"
-                           placeholder="Cr&eacute;dito"/>
-                    <div ng-show="errores.credito">{{errores.credito}}</div>
-                    <label for="profesor">Profesor</label>
-                    <select id="profesor" 
+                    <label for="anio">A&ntilde;o</label>
+                    <div class="input-group">
+                        <input id="anio" 
+                               class="form-control datepicker" 
+                               type="text" 
+                               ng-model="datosFormulario.anio"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <script>
+                        $("#anio").datepicker({
+                        format: " yyyy",
+                                startView: 'decade',
+                                minView: 'decade',
+                                viewSelect: 'decade',
+                                autoclose: true,
+                        });</script>
+                    <div ng-show="errores.anio">{{errores.anio}}</div>
+                    <label for="semestre">Semestre</label>
+                    <select id="semestre" 
+                            class="form-control" 
+                            type="number"
+                            ng-model="datosFormulario.semeste"
+                            placeholder = "Semestre">
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                    <div ng-show="errores.semestre">{{errores.semestre}}</div>
+                    <label for="estudiante">Estudiante</label>
+                    <select id="estudiante" 
                             class="form-control" 
                             type="text"
-                            ng-model="datosFormulario.profesor"
-                            ng-options="option.nombres + ' ' + option.apellidos for option in listaProfesores track by option.id"
-                            placeholder = "Profesor"/>
+                            ng-model="datosFormulario.estudiante"
+                            ng-options="option.nombres + ' ' + option.apellidos for option in listaEstudiantes track by option.id"
+                            placeholder = "Estudiante"/>
                     </select>
-                    <div ng-show="errores.profesor">{{errores.profesor}}</div>
-                    <label for="carrera">Carrera</label>
-                    <select id="carrera" 
-                            class="form-control" 
-                            type="text"
-                            ng-model="datosFormulario.carrera"
-                            ng-options="option.nombre for option in listaCarreras track by option.id"
-                            placeholder="Carrera">
-                    </select>
-                    <div ng-show="errores.carrera">{{errores.carrera}}</div>
-                    <label for="listaMaterias">Materias</label>
+                    <div ng-show="errores.estudiante">{{errores.estudiante}}</div>
+                    <label for="listaMaterias"> Materias</label>
                     <button type="button" class="btn btn-default" ng-click="nuevoHorario()" data-toggle="modal" data-target="#editarHorarios">
-                        Agregar materia
+                        Inscribir materia
                     </button>
                     <table class="resultados table table-striped">
                         <tr>
@@ -97,14 +101,14 @@
                                 &nbsp;
                             </th>
                         </tr>
-                        <tr ng-repeat="row in datosFormulario.materias">
-                            <td>{{row.materia.nombre}}</td>
+                        <tr ng-repeat="row in datosFormulario.listaMaterias">
+                            <td rowspan="2">{{row.materia.nombre}}</td>
                             <td>{{row.materia.diaSemana}}</td>
                             <td>{{row.materia.horaInicial}}</td>
                             <td>{{row.horaFinal}}</td>
 
                             <td class="row">
-                                <button type="button" class="btn btn-default" ng-click="editarHorario(row)" data-toggle="modal" data-target="#editarHorarios">
+                                <button type="button" class="btn btn-default" ng-click="editarHorario(row)" data-toggle="modal" data-target="#editarMaterias">
                                     <span class="glyphicon glyphicon-pencil"></span>Editar
                                 </button>
                                 <button type="button" class="btn btn-default" ng-click="eliminarHorario(row)">
@@ -122,5 +126,160 @@
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
             </div>
         </form>
+    </div>
+</div>
+
+
+<div class="modal fade" id="verMaterias" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Horarios</h3>
+            </div>
+            <div class="modal-body">
+                <table class="resultados table table-striped">
+                    <tr>
+                        <th>
+                            D&iacute;a de la semana
+                        </th>
+                        <th>
+                            Hora inicial
+                        </th>
+                        <th>
+                            Hora final
+                        </th>
+                    </tr>
+                    <tr ng-repeat="row in datosFormulario.listaHorarios">
+                        <td>{{row.diaSemana}}</td>
+                        <td>{{row.horaInicio}}</td>
+                        <td>{{row.horaFin}}</td>
+                    </tr>
+                </table> 
+            </div>
+            <div class="modal-footer">
+                <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editarMaterias" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Horarios</h3>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="formularioInscribirMaterias">
+                    <div class="row">
+                        <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
+                            <label for="materia">Materia</label>
+                            <select id="materia" 
+                                    class="form-control" 
+                                    type="text"
+                                    ng-model="datosMateria.materia"
+                                    ng-options="option.nombre for option in listaEstudiantes track by option.id | filter: {option.carrera.id: datosFormulario.estudiante.carrera.id}"
+                                    placeholder = "Estudiante"/>
+                            </select>
+                            <table class="resultados table table-striped">
+                                <tr>
+                                    <th>
+                                        D&iacute;a de la semana
+                                    </th>
+                                    <th>
+                                        Hora inicial
+                                    </th>
+                                    <th>
+                                        Hora final
+                                    </th>
+                                    <th>
+                                    &nbsp;
+                                    </th>
+                                </tr>
+                                <tr ng-repeat="row in datosMateria.materia.listaHorarios">
+                                    <td>{{row.diaSemana}}</td>
+                                    <td>{{row.horaInicio}}</td>
+                                    <td>{{row.horaFin}}</td>
+                                    <td class="row">
+                                        <button type="button" class="btn btn-default"
+                                                ng-click="guardarHorario(row.id)" data-toggle="modal" data-target="#verMaterias">
+                                            Inscribir
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table> 
+                        </div>
+                    </div> 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group">
+                    <button type="button" href="#" data-dismiss="modal" class="btn btn-default" ng-click="guardarMateria()">Aceptar</button>
+                    <button type="button" href="#" data-dismiss="modal" class="btn btn-danger" ng-click="cancelarMateria()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editarMateria" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Horarios</h3>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="formularioEditarMateria">
+                    <div class="row">
+                        <div class="form-group col-md-6" ng-class="errores.nombre ? 'error' : ''">
+                            <label for="materia" ng-model="datosMateria.materia">Materia</label>
+                            <div ng-show="errores.materia">{{errores.materia}}</div>
+                            <label for="diaSemana">D&iacute;a de la semana</label>
+                            <select id="diaSemana" 
+                                    class="form-control" 
+                                    type="text"
+                                    ng-model="datosHorario.diaSemana"
+                                    placeholder = "D&iacute;a de la semana">
+                                <option>Lunes</option>
+                                <option>Martes</option>
+                                <option>Mi&eacute;coles</option>
+                                <option>Jueves</option>
+                                <option>Viernes</option>
+                                <option>S&aacute;bado</option>
+                            </select>
+                            <div ng-show="errores.diaSemana">{{errores.diaSemana}}</div>
+                            <label for="horaInicio">Hora Inicio</label>
+                            <div class="input-group clockpicker " data-autoclose="true">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                                <input id="horaInicio" value="09:30" ng-model="datosHorario.horaInicio" type="text" class="form-control"  />
+                            </div>
+                            <div ng-show="errores.horaInicio">{{errores.horaInicio}}</div>
+                            <label for="horaFin">Hora Fin</label>
+                            <div class="input-group clockpicker " data-autoclose="true">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                                <input id="horaFin" ng-model="datosHorario.horaFin" type="text" class="form-control" value="09:30" />
+                            </div>
+                            <div ng-show="errores.horaFin">{{errores.horaFin}}</div>
+                            <script type="text/javascript">
+                                $('.clockpicker').clockpicker({format: 'h:mm'});
+                            </script>
+                        </div>
+                    </div> 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group">
+                    <button type="button" href="#" data-dismiss="modal" class="btn btn-default" ng-click="guardarHorario()">Aceptar</button>
+                    <button type="button" href="#" data-dismiss="modal" class="btn btn-danger" ng-click="cancelarHorario()">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

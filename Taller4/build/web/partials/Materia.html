@@ -69,6 +69,8 @@
                     <input id="credito" 
                            class="form-control" 
                            type="number"
+                           min="0"
+                           max="4"
                            ng-model="datosFormulario.credito"
                            placeholder="Cr&eacute;dito"/>
                     <div ng-show="errores.credito">{{errores.credito}}</div>
@@ -111,8 +113,8 @@
                         </tr>
                         <tr ng-repeat="row in datosFormulario.listaHorarios">
                             <td>{{row.diaSemana}}</td>
-                            <td>{{row.horaInicial}}</td>
-                            <td>{{row.horaFinal}}</td>
+                            <td>{{row.horaInicio}}</td>
+                            <td>{{row.horaFin }}</td>
 
                             <td class="row">
                                 <button type="button" class="btn btn-default" ng-click="editarHorario(row)" data-toggle="modal" data-target="#editarHorarios">
@@ -127,7 +129,6 @@
                     <div ng-show="errores.listaHorarios">{{errores.listaHorarios}}</div>
                 </div>
             </div> 
-
             <div class="btn-group">
                 <button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
@@ -158,8 +159,8 @@
                     </tr>
                     <tr ng-repeat="row in datosFormulario.listaHorarios">
                         <td>{{row.diaSemana}}</td>
-                        <td>{{row.horaInicial}}</td>
-                        <td>{{row.horaFinal}}</td>
+                        <td>{{row.horaInicio }}</td>
+                        <td>{{row.horaFin }}</td>
                     </tr>
                 </table> 
             </div>
@@ -195,47 +196,34 @@
                                 <option>S&aacute;bado</option>
                             </select>
                             <div ng-show="errores.diaSemana">{{errores.diaSemana}}</div>
-                            <label for="horaInial">Hora Inicial</label>
-<!--                            <div id="datetimepicker" class="input-group bootstrap-timepicker timepicker">
-                                <input data-format="hh:mm:ss"  id="horaInicial" type="text" ng-model="datosHorario.horaInicial" class="form-control input-small">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                            </div>-->
-                            <div id="clockpicker" class="input-group clockpicker">
-                                <input type="text" class="form-control" value="09:30">
+                            <label for="horaInicio">Hora Inicio</label>
+                            <div class="input-group clockpicker " data-autoclose="true">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-time"></span>
                                 </span>
+                                <input id="horaInicio" value="09:30" ng-model="datosHorario.horaInicio" type="text" class="form-control"  />
                             </div>
-                            <script type="text/javascript">
-                                        $('#clockpicker').clockpicker();
-                            </script>
-                            <div ng-show="errores.horaInicial">{{errores.horaInicial}}</div>
-                            <label for="horaFinal">Hora Final</label>
-<!--                            <div id="datetimepicker" class="input-group bootstrap-timepicker timepicker">
-                                <input data-format="hh:mm:ss" id="horaFinal" type="text" ng-model="datosHorario.horaFinal" class="form-control input-small">
-                                <span class="add-on">
-                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                    </i>
+                            <div ng-show="errores.horaInicio">{{errores.horaInicio}}</div>
+                            <label for="horaFin">Hora Fin</label>
+                            <div class="input-group clockpicker " data-autoclose="true">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
                                 </span>
-                            </div>-->
-                            <!--<script type="text/javascript">
-                                        $(function () {
-                                            $('#datetimepicker').datetimepicker({
-                                                pickDate: false
-                                            });
-                                        });</script-->
-                            <div ng-show="errores.horaFinal">{{errores.horaFinal}}</div>
+                                <input id="horaFin" ng-model="datosHorario.horaFin" type="text" class="form-control" value="09:30" />
+                            </div>
+                            <div ng-show="errores.horaFin">{{errores.horaFin}}</div>
+                            <script type="text/javascript">
+                                        $('.clockpicker').clockpicker({format: 'h:mm'});
+                            </script>
                         </div>
                     </div> 
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default" ng-click="guardarHorario()">Aceptar</button>
-                        <button type="button" class="btn btn-default" ng-click="cancelarHorario()">Cancelar</button>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn btn-danger">Cerrar</a>
+                <div class="btn-group">
+                    <button type="button" href="#" data-dismiss="modal" class="btn btn-default" ng-click="guardarHorario()">Aceptar</button>
+                    <button type="button" href="#" data-dismiss="modal" class="btn btn-danger" ng-click="cancelarHorario()">Cancelar</button>
+                </div>
             </div>
         </div>
     </div>

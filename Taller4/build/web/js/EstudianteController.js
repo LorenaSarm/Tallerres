@@ -42,7 +42,3 @@ module.controller('EstudianteCtrl', ['$scope', '$filter', '$http', function ($sc
             }
         };
     }]);
-
-//angular.module('datepicker', ['ngMaterial', 'ngMessages']).controller('DatePickerCtrl', function () {
-//    this.myDate = new Date();
-//});

@@ -4,7 +4,7 @@ module.controller('MatriculaCtrl', ['$scope', '$filter', '$http', function ($sco
         //listar
         $scope.lista = matriculas;
         $scope.datosFormulario = {};
-        $scope.datosHorario = {};
+        $scope.datosMateria = {};
         $scope.panelEditar = false;
         $scope.listaMaterias = materias;
         $scope.listaEstudiantes = estudiantes;
@@ -33,6 +33,43 @@ module.controller('MatriculaCtrl', ['$scope', '$filter', '$http', function ($sco
             $scope.panelEditar = true;
             $scope.datosFormulario = data;
         };
+        
+        //guardar
+        $scope.nuevoHorario = function () {
+            $scope.datosHorario = {};
+        };
+
+        //guardar
+        $scope.guardarMateria = function () {
+            if (!$scope.datosFormulario.listaMaterias) {
+                $scope.datosFormulario.listaMaterias = [];
+            }
+            var index = $scope.datosFormulario.listaMaterias.indexOf($scope.datosHorario);
+            if (index === -1) {
+                if (!$scope.datosFormulario.idMaterias) {
+                    $scope.datosFormulario.idMaterias= 0;
+                }
+                $scope.datosFormulario.idMaterias = $scope.datosFormulario.idMaterias + 1;
+                $scope.datosMateria.id = $scope.datosFormulario.idMaterias;
+                $scope.datosFormulario.listaHorarios.push($scope.datosHorario);
+            } else {
+                if (!$scope.datosFormulario.idMaterias) {
+                    $scope.datosFormulario.idMaterias= 0;
+                }
+                $scope.datosFormulario.idMaterias = $scope.datosFormulario.idMaterias + 1;
+                $scope.datosMateria.id = $scope.datosFormulario.idMaterias;
+                $scope.datosFormulario.listaHorarios.push($scope.datosHorario);
+            }
+        };
+        
+        $scope.guardarHorario = function(data) {
+                            
+        };
+        
+        $scope.cancelarMateria = function () {
+            $scope.datosMateria = {};
+        };
+
         //eliminar
         $scope.eliminar = function (data) {
             if (confirm('\xbfDesea elminar este registro?')) {
@@ -41,6 +78,10 @@ module.controller('MatriculaCtrl', ['$scope', '$filter', '$http', function ($sco
                     $scope.lista.splice(index, 1);
                 }
             }
+        };
+        
+        $scope.verMaterias = function (data) {
+            $scope.datosFormulario = data;
         };
     }]);
 

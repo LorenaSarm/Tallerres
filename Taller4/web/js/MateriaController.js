@@ -42,18 +42,24 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
                 }
             }
         };
-        
-         //guardar
+
+        //guardar
         $scope.nuevoHorario = function () {
             $scope.datosHorario = {};
         };
 
         //guardar
         $scope.guardarHorario = function () {
+            if (!$scope.datosFormulario.listaHorarios) {
+                $scope.datosFormulario.listaHorarios = [];
+            }
             var index = $scope.datosFormulario.listaHorarios.indexOf($scope.datosHorario);
             if (index === -1) {
-                var idHorario = $scope.datosFormulario.idHorario;
-                $scope.datosHorario.id = idHorario++;
+                if (!$scope.datosFormulario.idHorario) {
+                    $scope.datosFormulario.idHorario = 0;
+                }
+                $scope.datosFormulario.idHorario = $scope.datosFormulario.idHorario + 1;
+                $scope.datosHorario.id = $scope.datosFormulario.idHorario;
                 $scope.datosFormulario.listaHorarios.push($scope.datosHorario);
             }
         };
@@ -68,15 +74,15 @@ module.controller('MateriaCtrl', ['$scope', '$filter', '$http', function ($scope
         //eliminar
         $scope.eliminarHorario = function (data) {
             if (confirm('\xbfDesea elminar este registro?')) {
-                var index = $scope.listaHorarios.indexOf($scope.datosHorario);
+                var index = $scope.datosFormulario.listaHorarios.indexOf($scope.datosHorario);
                 if (index > -1) {
-                    $scope.listaHorarios.splice(index, 1);
+                    $scope.datosFormulario.listaHorarios.splice(index, 1);
                 }
             }
         };
-        
+
         $scope.verHorarios = function (data) {
             $scope.datosFormulario = data;
-            alert("Se han ingresado los datos");
+            alert("idHorarios " + data.idHorario);
         };
     }]);
